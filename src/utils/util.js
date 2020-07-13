@@ -65,3 +65,15 @@ export function removeLoadingAnimate (id = '', timeout = 1500) {
     document.body.removeChild(document.getElementById(id))
   }, timeout)
 }
+
+export function jsonToParam (obj) {
+  const param = '?'
+  // 1.json 变为'='连接的字符串数组
+  const arr = []
+  const keys = Object.keys(obj)
+  for (let i = 0; i < keys.length; i++) {
+    arr.push(keys[i] + '=' + obj[keys[i]])
+  }
+  // 2.数组用 '&' join
+  return param + arr.join('&')
+}

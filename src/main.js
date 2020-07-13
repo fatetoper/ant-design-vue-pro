@@ -9,20 +9,24 @@ import store from './store/'
 import i18n from './locales'
 import { VueAxios } from './utils/request'
 import ProLayout, { PageHeaderWrapper } from '@ant-design-vue/pro-layout'
+
 import themePluginConfig from '../config/themePluginConfig'
+import { Uploader } from '@/components'
 
 // mock
 // WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
-import './mock'
+// import './mock'
 
 import bootstrap from './core/bootstrap'
 import './core/lazy_use'
 import './permission' // permission control
 import './utils/filter' // global filter
 import './global.less'
-
+// import 'ant-design-vue/dist/antd.css'
+// import Antd from 'ant-design-vue'
+Vue.prototype.$uploader = Uploader
 Vue.config.productionTip = false
-
+// Vue.use(Antd)
 // mount axios to `Vue.$http` and `this.$http`
 Vue.use(VueAxios)
 Vue.component('pro-layout', ProLayout)

@@ -128,7 +128,7 @@ import { timeFix } from '@/utils/util'
 import { mapState } from 'vuex'
 import { PageHeaderWrapper } from '@ant-design-vue/pro-layout'
 import { Radar } from '@/components'
-
+import { mock } from '@/api/url'
 import { getRoleList, getServiceList } from '@/api/manage'
 
 const DataSet = require('@antv/data-set')
@@ -224,21 +224,38 @@ export default {
     this.initRadar()
   },
   methods: {
+    /* tree */
+    onExpand (expandedKeys) {
+      console.log('onExpand', expandedKeys)
+      // if not set autoExpandParent to false, if children expanded, parent can not collapse.
+      // or, you can remove all expanded children keys.
+      this.expandedKeys = expandedKeys
+      this.autoExpandParent = false
+    },
+    onCheck (checkedKeys) {
+      console.log('onCheck', checkedKeys)
+      this.checkedKeys = checkedKeys
+    },
+    onSelect (selectedKeys, info) {
+      console.log('onSelect', info)
+      this.selectedKeys = selectedKeys
+    },
+    /* tree_end */
     getProjects () {
-      this.$http.get('/list/search/projects')
+      this.$http.get(mock.projects)
         .then(res => {
           this.projects = res.result && res.result.data
           this.loading = false
         })
     },
     getActivity () {
-      this.$http.get('/workplace/activity')
+      this.$http.get(mock.activity)
         .then(res => {
           this.activities = res.result
         })
     },
     getTeams () {
-      this.$http.get('/workplace/teams')
+      this.$http.get(mock.teams)
         .then(res => {
           this.teams = res.result
         })
@@ -246,7 +263,7 @@ export default {
     initRadar () {
       this.radarLoading = true
 
-      this.$http.get('/workplace/radar')
+      this.$http.get(mock.radar)
         .then(res => {
           const dv = new DataSet.View().source(res.result)
           dv.transform({

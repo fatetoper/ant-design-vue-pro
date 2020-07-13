@@ -15,7 +15,15 @@ const locale = {
   'menu.dashboard.monitor': 'Monitor',
   'menu.dashboard.workplace': 'Workplace',
   'menu.dashboard.baidu': 'Baidu',
-
+  'menu.content': 'ContentManage',
+  'menu.content.section': 'SectionList',
+  'menu.content.document': 'DocumentList',
+  'menu.content.pending': 'PendingDoc',
+  'menu.content.mydoc': 'MyDoc',
+  'menu.content.comment': 'Comment',
+  'menu.content.recycler': 'Recycler',
+  'menu.content.incinerator': 'Incinerator',
+  /*  */
   'layouts.usermenu.dialog.title': 'Message',
   'layouts.usermenu.dialog.content': 'Do you really log-out.',
 

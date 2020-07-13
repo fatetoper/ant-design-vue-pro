@@ -27,6 +27,10 @@ import ArticleListContent from '@/components/ArticleListContent'
 
 import Dialog from '@/components/Dialog'
 
+// cms components
+import ArtEditor from '@/components/ArtEditor'
+import Uploader from '@/components/Uploader'
+
 export {
   AvatarList,
   Bar,
@@ -51,6 +55,7 @@ export {
   TagSelect,
   StandardFormRow,
   ArticleListContent,
-
-  Dialog
+  Dialog,
+  ArtEditor,
+  Uploader
 }

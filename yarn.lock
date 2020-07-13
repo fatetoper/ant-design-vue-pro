@@ -11001,6 +11001,11 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
+vue-ueditor-wrap@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.npm.taobao.org/vue-ueditor-wrap/download/vue-ueditor-wrap-2.4.3.tgz#b41e1482fb05a075303168b7cf5369d3ac404b79"
+  integrity sha1-tB4UgvsFoHUwMWi3z1Np06xAS3k=
+
 vue@^2.5.17, vue@^2.5.3, vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

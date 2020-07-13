@@ -1,7 +1,60 @@
 import request from '@/utils/request'
-import { api } from './url'
+import serve from '@/utils/api'
+import axios from '@/utils/mock'
+import { api, mena, mock } from './url'
 export default api
 
+// mysql
+export function getArtPro (parameter) {
+  return serve({
+    url: mena.artpro,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function getArtClo (parameter) {
+  return serve({
+    url: mena.artclo,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function getEditorInfo (parameter) {
+  return serve({
+    url: mena.editorinfo,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function getWriter (parameter) {
+  return serve({
+    url: mena.writer,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function getSource (parameter) {
+  return serve({
+    url: mena.source,
+    method: 'get',
+    params: parameter
+  })
+}
+// node-mock
+
+export function getNav (parameter) {
+  return axios({
+    url: mock.nav,
+    method: 'post',
+    params: parameter
+  })
+}
+
+// local
 export function getUserList (parameter) {
   return request({
     url: api.user,
@@ -20,7 +73,7 @@ export function getRoleList (parameter) {
 
 export function getServiceList (parameter) {
   return request({
-    url: api.service,
+    url: mock.serviceList,
     method: 'get',
     params: parameter
   })

@@ -14,8 +14,73 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/content/section',
     children: [
+      // 内容管理
+      {
+        path: '/content',
+        name: 'content',
+        redirect: '/content/section',
+        component: RouteView,
+        meta: { title: 'menu.content', keepAlive: true, icon: bxAnaalyse, permission: [ 'content' ] },
+        children: [
+          // {
+          //   path: '/dashboard/analysis/:pageNo([1-9]\\d*)?',
+          //   name: 'Analysis',
+          //   component: () => import('@/views/dashboard/Analysis'),
+          //   meta: { title: 'menu.dashboard.analysis', keepAlive: false, permission: [ 'content' ] }
+          // },
+          {
+          /* 栏目列表 */
+            path: '/content/section',
+            name: 'SectionList',
+            component: () => import('@/views/content/section/'),
+            meta: { title: 'menu.content.section', keepAlive: true, permission: [ 'content' ] }
+          },
+          {
+          /* 文档列表 */
+            path: '/content/document',
+            name: 'DocumentList',
+            component: () => import('@/views/content/document/'),
+            meta: { title: 'menu.content.document', keepAlive: true, permission: [ 'content' ] }
+          },
+          {
+          /* 待审文档 */
+            path: '/content/pending',
+            name: 'PendingDoc',
+            component: () => import('@/views/dashboard/Workplace'),
+            meta: { title: 'menu.content.pending', keepAlive: true, permission: [ 'content' ] }
+          },
+          {
+          /* 我的文档 */
+            path: '/content/mydoc',
+            name: 'MyDoc',
+            component: () => import('@/views/dashboard/Workplace'),
+            meta: { title: 'menu.content.mydoc', keepAlive: true, permission: [ 'content' ] }
+          },
+          {
+          /* 评论管理 */
+            path: '/content/comment',
+            name: 'Comment',
+            component: () => import('@/views/dashboard/Workplace'),
+            meta: { title: 'menu.content.comment', keepAlive: true, permission: [ 'content' ] }
+          },
+          {
+          /* 回收站 */
+            path: '/content/recycler',
+            name: 'Recycler',
+            component: () => import('@/views/dashboard/Workplace'),
+            meta: { title: 'menu.content.recycler', keepAlive: true, permission: [ 'content' ] }
+          },
+          {
+          /* 焚化炉 */
+            path: '/content/incinerator',
+            name: 'Incinerator',
+            component: () => import('@/views/dashboard/Workplace'),
+            meta: { title: 'menu.content.incinerator', keepAlive: true, permission: [ 'content' ] }
+          }
+        ]
+      },
       // dashboard
       {
         path: '/dashboard',
