@@ -1,3 +1,13 @@
+/*
+ * @Author: fatetoper
+ * @Date: 2020-05-21 17:50:34
+ * @LastEditors: fatetoper
+ * @LastEditTime: 2020-07-29 17:26:14
+ * @Modultype: Component
+ * @Usage: import/global/prototype
+ * @Description: Do not edit
+ * @FilePath: \ant\src\utils\domUtil.js
+ */
 import config from '@/config/defaultSettings'
 
 export const setDocumentTitle = function (title) {
@@ -9,6 +19,7 @@ export const setDocumentTitle = function (title) {
     const i = document.createElement('iframe')
     i.src = '/favicon.ico'
     i.style.display = 'none'
+    // timer?????
     i.onload = function () {
       setTimeout(function () {
         i.remove()

@@ -142,7 +142,8 @@ export default {
       },
       totle: 42,
       pageSizeOptions: ['10', '20', '30', '40', '50'],
-      category: []
+      category: [],
+      imageUrl: ''
     }
   },
   computed: {
@@ -151,23 +152,24 @@ export default {
     }
   },
   created () {
-    console.log('this.$uploader=>', this.$uploader)
     getServiceList().then(res => {
   /* axios获取分页内容 */
   // console.log('workplace -> call getServiceList()', res)
     })
     getArtPro(this.parameters).then(res => {
       if (res.data.data) this.data = res.data.data
-      console.log('doc-> listBody -> this.data', this.data)
+      // console.log('doc-> listBody -> this.data', this.data)
     })
     getArtClo().then(res => {
       if (res.data.data) {
         this.columns = res.data.data.col
         this.totle = res.data.data.totle
         this.category = res.data.data.category
-        console.log('doc-> listBody -> this.category', this.category)
+        // console.log('doc-> listBody -> this.category', this.category)
       }
     })
+  },
+  mounted () {
   },
   methods: {
     add () {

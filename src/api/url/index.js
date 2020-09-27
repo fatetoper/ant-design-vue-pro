@@ -1,3 +1,13 @@
+/*
+ * @Author: fatetoper
+ * @Date: 2020-05-30 12:11:36
+ * @LastEditors: fatetoper
+ * @LastEditTime: 2020-09-26 14:17:56
+ * @Modultype: Component
+ * @Usage: import/global/prototype
+ * @Description: Do not edit
+ * @FilePath: \ant\src\api\url\index.js
+ */
 /**
  * 项目默认配置项URL
  */
@@ -31,7 +41,10 @@ const mena = {
   artdetail: 'artdetail',
   editorinfo: '/editorinfo',
   writer: '/writer',
-  source: '/source'
+  source: '/source',
+  imgupload: '/imgupload',
+  dirname: '/dirname',
+  images: '/images'
 }
 
 const mock = {

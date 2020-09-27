@@ -111,14 +111,14 @@
               </a-col>
               <a-col
                 :span="5"
-                style="{ display: 'block' }"
+                style="{ display: 'block';margin-left: 15px; }"
               >
                 <a-form-item label="">
                   <span>(多标签用' , '号分开)</span>
                 </a-form-item>
               </a-col>
               <a-col
-                :span="5"
+                :span="7"
                 style="{ display: 'block' }"
               >
                 <a-form-item v-bind="formItemLayout" label="权重">
@@ -133,14 +133,7 @@
                       },
                     ]"
                   />
-                </a-form-item>
-              </a-col>
-              <a-col
-                :span="5"
-                style="{ display: 'block' }"
-              >
-                <a-form-item label="">
-                  <span>(越大越靠前)</span>
+                  <span> (越大越靠前)</span>
                 </a-form-item>
               </a-col>
             </a-row>
@@ -164,42 +157,24 @@
               </a-col>
             </a-row>
             <!-- litpic -->
-            <a-row :gutter="24">
-              <a-col
-                :span="8"
-                style="{ display: 'block' }"
-              >
-                <a-form-item v-bind="formItemLayout" label="首页图">
-                  <a-input
-                    v-decorator="[
-                      'litpic',
-                      {
-                        initialValue: formTable.litpic,
-                        rules: [{ message: 'Please upload your picture!', whitespace: true }],
-                      },
-                    ]"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col
-                :span="1"
-                style="{ display: 'block' }"
-              >
-                <a-form-item v-bind="formItemLayout" label="">
-                  <a-button>浏览...</a-button>
-                </a-form-item>
-              </a-col>
-              <a-col
-                :span="8"
-                style="{ display: 'block' }"
-              >
-                <a-form-item v-bind="formItemLayout" label="预览">
-                  <img src="" alt="">
-                </a-form-item>
-              </a-col>
-            </a-row>
+            <ImgUper
+              :formItemLayout="formItemLayout"
+              editorType="add"
+              :formTable="formTable"
+              id="litpic"
+              :host="host"
+              :dirname="dirname"
+            />
             <!-- litpic1 -->
-            <a-row :gutter="24">
+            <ImgUper
+              :formItemLayout="formItemLayout"
+              editorType="add"
+              :formTable="formTable"
+              id="litpic1"
+              :host="host"
+              :dirname="dirname"
+            />
+            <!-- <a-row :gutter="24">
               <a-col
                 :span="8"
                 style="{ display: 'block' }"
@@ -217,22 +192,24 @@
                 </a-form-item>
               </a-col>
               <a-col
-                :span="1"
+                :span="3"
                 style="{ display: 'block' }"
               >
                 <a-form-item v-bind="formItemLayout" label="">
-                  <a-button>浏览...</a-button>
+                  <a-button @click="handleBrowse('litpic1')">浏览...</a-button>
                 </a-form-item>
               </a-col>
               <a-col
-                :span="8"
-                style="{ display: 'block' }"
+                :span="3"
+                style="{ display: 'block'; }"
               >
                 <a-form-item v-bind="formItemLayout" label="预览">
-                  <img src="" alt="">
+                  <div class="imgpreview" :style="imgpreviewStyle">
+                    <img :src="litpic1" alt="">
+                  </div>
                 </a-form-item>
               </a-col>
-            </a-row>
+            </a-row> -->
             <!-- source writer -->
             <a-row :gutter="24">
               <a-col
@@ -359,7 +336,6 @@
                       {
                         rules: [
                           {
-                            required: true,
                             message: 'Input something!',
                           },
                         ],
@@ -386,14 +362,17 @@
 <script>
 import { TreeSelect } from 'ant-design-vue'
 import VueUeditorWrap from 'vue-ueditor-wrap'
+import ImgUper from '@/components/ImgUper'
 import {
   getEditorInfo,
   getWriter,
-  getSource
+  getSource,
+  getDirname
 } from '@/api/manage'
 export default {
   name: 'ArtEditor',
   components: {
+    ImgUper,
     'a-tree-select': TreeSelect,
     VueUeditorWrap
   },
@@ -402,6 +381,11 @@ export default {
       type: String,
       required: true,
       default: 'add'
+    },
+    imgDefUrl: {
+      type: String,
+      required: false,
+      default: 'http://localhost:8081/upload/def/NoImg0.png'
     },
     editorFn: {
       type: Function,
@@ -424,7 +408,8 @@ export default {
         writer: '',
         typeid: '',
         typeid2: '',
-        body: ''
+        body: '',
+        dirname: ''
       },
       body: '<h2><img src="http://img.baidu.com/hi/jx2/j_0003.gif"/>Vue + UEditor + v-model双向绑定</h2>',
       myConfig: {
@@ -439,11 +424,13 @@ export default {
         // UEditor 资源文件的存放路径，如果你使用的是 vue-cli 生成的项目，通常不需要设置该选项，vue-ueditor-wrap 会自动处理常见的情况，如果需要特殊配置，参考下方的常见问题2
         UEDITOR_HOME_URL: '/UEditor/'
       },
+      host: 'localhost',
       value: undefined,
       expand: false,
       treeData: [],
       writer: [],
       source: [],
+      dirname: '',
       formItemLayout: {
         labelCol: {
           xs: { span: 4 },
@@ -490,27 +477,53 @@ export default {
       const obj = { ...this.formTable }
       obj.body = this.msg
       return obj
+    },
+    // litpic () {
+    //   const imgUrl = 'http://' + this.host + this.formTable.litpic
+    //   return imgUrl
+    // },
+    // litpic1 () {
+    //   const imgUrl = 'http://' + this.host + this.formTable.litpic1
+    //   return imgUrl
+    // },
+    imgpreviewStyle () {
+      const st = `background:url(${this.imgDefUrl}) no-repeat center;`
+      return st
     }
   },
   created () {
     getEditorInfo().then(res => {
       if (res.data.data) {
         this.treeData = res.data.data.tree
-        console.log('ArtEditor -> this.treeData', this.treeData)
+        // console.log('ArtEditor -> this.treeData', this.treeData)
       }
     })
     getWriter().then(res => {
       if (res.data.data) {
         this.writer = res.data.data.writer
-        console.log('ArtEditor -> this.writer', this.writer)
+        // console.log('ArtEditor -> this.writer', this.writer)
       }
     })
     getSource().then(res => {
       if (res.data.data) {
         this.source = res.data.data.source
-        console.log('ArtEditor -> this.source', this.source)
+        // console.log('ArtEditor -> this.source', this.source)
       }
     })
+    if (this.editorType === 'add') {
+      getDirname().then(res => {
+      if (res.data.data) {
+        this.dirname = res.data.data.dirname
+        this.baseurl = res.data.data.baseurl
+        this.host = res.data.data.host
+        // console.log('ArtEditor -> this.dirname', this.dirname)
+        // console.log('ArtEditor -> this.baseurl', this.baseurl)
+        // console.log('ArtEditor -> this.host', this.host)
+      }
+    })
+    }
+  },
+  mounted () {
   },
   methods: {
     callback (key) {
@@ -530,7 +543,20 @@ export default {
     closeEditor () {
       this.$emit('switchEditor', 'close')
       this.editorFn()
+    },
+    handleBrowse (id) {
+      const urlReciver = document.querySelector(`#artDeteils_${id}`)
+      const urlData = (id) => {
+        return (urlData) => {
+          this.formTable[id] = urlData
+        }
+      }
+      // urlReciver, urlData: required
+      console.log('this.$uploader()==>', this.$uploader({ zIndex: 2003, urlReciver: urlReciver, urlData: urlData(id), dirName: this.dirname }))
     }
+    // ,
+    // showPreImg (url,defUrl) {
+    // }
   },
   beforeMount () {
   },
@@ -541,7 +567,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
 /* @import '/node_modules/ant-design-vue/dist/antd.css'; */
 .editor {
   position: absolute;
@@ -552,19 +578,21 @@ export default {
   background: white;
   z-index: 1040;
 }
-.control button:first-child {
-  margin-left: 20px;
-}
-.control button {
-  margin: 5px;
+
+.control {
+  button {
+    margin: 5px;
+  }
+  button:first-child {
+    margin-left: 20px;
+  }
 }
 
 #table {
   margin: 20px;
-}
-
-#table tr {
-  display: flex;
+  tr {
+    display: flex;
+  }
 }
 
 .ant-advanced-form {
@@ -572,27 +600,38 @@ export default {
   background: #fbfbfb;
   border: 1px solid #d9d9d9;
   border-radius: 6px;
+  .ant-form-item {
+    display: flex;
+  }
+  .ant-form-item-control-wrapper {
+    flex: 1;
+  }
 }
 
-.ant-advanced-form .ant-form-item {
-  display: flex;
+#components-form-demo-advanced-search {
+  .ant-form {
+    max-width: none;
+  }
+  .search-result-list {
+    margin-top: 16px;
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    background-color: #fafafa;
+    min-height: 200px;
+    text-align: center;
+    padding-top: 80px;
+  }
 }
 
-.ant-advanced-form .ant-form-item-control-wrapper {
-  flex: 1;
+.imgpreview {
+  height: 120px;
+  width: 150px;
+  margin-left: 10px;
+  margin-top: -35px;
+  margin-bottom: 20px;
+  img {
+    height: 120px;
+    width: 150px;
+  }
 }
-
-#components-form-demo-advanced-search .ant-form {
-  max-width: none;
-}
-#components-form-demo-advanced-search .search-result-list {
-  margin-top: 16px;
-  border: 1px dashed #e9e9e9;
-  border-radius: 6px;
-  background-color: #fafafa;
-  min-height: 200px;
-  text-align: center;
-  padding-top: 80px;
-}
-
 </style>

@@ -1,3 +1,13 @@
+/*
+ * @Author: fatetoper
+ * @Date: 2020-05-21 17:50:34
+ * @LastEditors: fatetoper
+ * @LastEditTime: 2020-07-29 17:27:45
+ * @Modultype: Component
+ * @Usage: import/global/prototype
+ * @Description: Do not edit
+ * @FilePath: \ant\src\utils\util.js
+ */
 export function timeFix () {
   const time = new Date()
   const hour = time.getHours()
@@ -61,6 +71,7 @@ export function removeLoadingAnimate (id = '', timeout = 1500) {
   if (id === '') {
     return
   }
+  // timer?????
   setTimeout(() => {
     document.body.removeChild(document.getElementById(id))
   }, timeout)
@@ -76,4 +87,9 @@ export function jsonToParam (obj) {
   }
   // 2.数组用 '&' join
   return param + arr.join('&')
+}
+
+const hasOwnProperty = Object.prototype.hasOwnProperty
+export function hasOwn (obj, key) {
+  return hasOwnProperty.call(obj, key)
 }

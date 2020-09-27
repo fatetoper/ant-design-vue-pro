@@ -1,3 +1,13 @@
+/*
+ * @Author: fatetoper
+ * @Date: 2020-05-21 17:50:34
+ * @LastEditors: fatetoper
+ * @LastEditTime: 2020-09-27 08:08:13
+ * @Modultype: Component
+ * @Usage: import/global/prototype
+ * @Description: Do not edit
+ * @FilePath: \ant\.eslintrc.js
+ */
 module.exports = {
   root: true,
   env: {
@@ -9,6 +19,7 @@ module.exports = {
   ],
   rules: {
     'no-console': 'off',
+    'no-useless-escape': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'generator-star-spacing': 'off',
     'no-mixed-operators': 0,

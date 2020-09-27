@@ -44,6 +44,30 @@ export function getSource (parameter) {
     params: parameter
   })
 }
+
+export function getDirname (parameter) {
+  return serve({
+    url: mena.dirname,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function getImages (parameter) {
+  return serve({
+    url: mena.images + '/' + parameter,
+    method: 'get'
+  })
+}
+
+export function postUpload (parameter) {
+  return serve({
+    url: mena.imgupload,
+    method: 'post',
+    params: parameter
+  })
+}
+
 // node-mock
 
 export function getNav (parameter) {
