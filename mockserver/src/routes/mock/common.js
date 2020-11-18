@@ -1,8 +1,7 @@
-import KoaRouter from 'koa-router'
 import controllers from '../../controllers'
 import { getQueryParameters } from './util'
 import Mock from 'better-mock'
-// import Bmock from 'better-mock'
+import KoaRouter from 'koa-router'
 const router = new KoaRouter()
 
 // 请求接口校验中间件
@@ -460,14 +459,14 @@ router.get('/serverList', (ctx) => {
   const data = (options) => {
     return  (() => {
       const parameters = getQueryParameters(options)
-      const totalCount = Mock.mock('@integer(100, 999)') // 需要sql获取或者mock生成?????
+      const totalCount = Mock.mock('@integer(100, 999)')
       const result = [],
             pageNo = parseInt(parameters.pageNo),
             pageSize = parseInt(parameters.pageSize),
             totalPage = Math.ceil(totalCount / pageSize),
             key = (pageNo - 1) * pageSize,
-            next = (pageNo >= totalPage ? (totalCount % pageSize) : pageSize) + 1
-      for (let i = 1; i < next; i++) {
+            itemNo = (pageNo >= totalPage ? (totalCount % pageSize) : pageSize) + 1
+      for (let i = 1; i < itemNo; i++) {
         const tmpKey = key + i
         result.push({
           key: tmpKey,

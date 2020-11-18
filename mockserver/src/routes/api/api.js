@@ -25,4 +25,6 @@ router.post('/deleteItemApi', checkfn, controllers.api.deleteItemApi)
 // 搜索api
 router.post('/searchApi', checkfn, controllers.api.searchApi)
 
+/*---------------------------------------API相关---------------------------------------------*/
+
 module.exports=router.routes();

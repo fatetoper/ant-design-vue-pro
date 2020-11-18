@@ -1,12 +1,10 @@
 /*
- * @Author: fatetoper
- * @Date: 2020-05-30 12:11:36
- * @LastEditors: fatetoper
- * @LastEditTime: 2020-09-26 14:17:56
- * @Modultype: Component
- * @Usage: import/global/prototype
- * @Description: Do not edit
- * @FilePath: \ant\src\api\url\index.js
+ * @Author: your name
+ * @Date: 2020-07-14 11:21:38
+ * @LastEditTime: 2020-11-17 20:58:11
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \antdv-pro\src\api\url\index.js
  */
 /**
  * 项目默认配置项URL
@@ -36,15 +34,12 @@ const api = {
 }
 
 const mena = {
-  artpro: '/artpro',
-  artclo: '/artclo',
-  artdetail: 'artdetail',
-  editorinfo: '/editorinfo',
-  writer: '/writer',
-  source: '/source',
-  imgupload: '/imgupload',
-  dirname: '/dirname',
-  images: '/images'
+  artpro: '/api/mena/artpro',
+  artclo: '/api/mena/artclo',
+  artdetail: '/api/mena/artdetail',
+  editorinfo: '/api/mena/editorinfo',
+  writer: '/api/mena/writer',
+  source: '/api/mena/source'
 }
 
 const mock = {

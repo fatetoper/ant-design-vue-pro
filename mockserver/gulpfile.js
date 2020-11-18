@@ -62,5 +62,4 @@ gulp.task('replace', function() {
         .pipe(gulp.dest('./dist'));
 });
 
-
 gulp.task('build', gulpSequence('clean:dist', 'babel', 'replace', 'js:min'));

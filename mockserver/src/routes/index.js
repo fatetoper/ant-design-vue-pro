@@ -1,31 +1,33 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-14 11:21:37
+ * @LastEditTime: 2020-11-15 14:40:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \mockserver\src\routes\index.js
+ */
 import KoaRouter from 'koa-router'
 import controllers from '../controllers'
 import url from 'url'
 import {
 	util
 } from '../tool'
-
-
 const router = new KoaRouter()
+const staticConfig = require('./static');
 
 // 请求接口校验中间件
 console.log('controllers:', 'router works')
 const checkfn = controllers.common.checkRequestUrl;
 const userLogin = controllers.common.checkIsUserLogin;
 
-
-
 router.post('/auth/2step-code', async ctx=>{
   ctx.body='2333';
 })
 
-// router.post('/auth/login', async ctx=>{
-//   ctx.body='2333';
-// })
-
 router.use('/api', require('./api'));
-
 router.use('/mock', require('./mock'));
+staticConfig(router);
+
 /*---------------------------------------处理所有接口---------------------------------------------*/
 // 所有请求返回
 router.all('*', async function(ctx) {
@@ -48,4 +50,5 @@ router.all('*', async function(ctx) {
 	});
 })
 
+// console.log('router==>', router)
 module.exports = router

@@ -142,8 +142,7 @@ export default {
       },
       totle: 42,
       pageSizeOptions: ['10', '20', '30', '40', '50'],
-      category: [],
-      imageUrl: ''
+      category: []
     }
   },
   computed: {
@@ -152,24 +151,25 @@ export default {
     }
   },
   created () {
+    // console.log('this.$uploader=>', this.$uploader)
     getServiceList().then(res => {
   /* axios获取分页内容 */
-  // console.log('workplace -> call getServiceList()', res)
+      // console.log('workplace -> call getServiceList()', res)
     })
+    // console.log('doc-> listBody -> this.parameters', this.parameters)
     getArtPro(this.parameters).then(res => {
-      if (res.data.data) this.data = res.data.data
+      if (res.data) this.data = res.data
       // console.log('doc-> listBody -> this.data', this.data)
     })
     getArtClo().then(res => {
-      if (res.data.data) {
-        this.columns = res.data.data.col
-        this.totle = res.data.data.totle
-        this.category = res.data.data.category
+      // console.log('doc-> listBody ->getArtClo()==>res', res)
+      if (res.data) {
+        this.columns = res.data.col
+        this.totle = res.data.totle
+        this.category = res.data.category
         // console.log('doc-> listBody -> this.category', this.category)
       }
     })
-  },
-  mounted () {
   },
   methods: {
     add () {
@@ -210,7 +210,7 @@ export default {
       console.log('this.parameters.pageNo =>', this.parameters.pageNo)
       console.log('this.parameters =>', this.parameters)
       getArtPro(this.parameters).then(res => {
-        if (res.data.data) this.data = res.data.data
+        if (res.data) this.data = res.data
       })
     },
     change (page, pageSize) {
@@ -218,7 +218,7 @@ export default {
       this.parameters.staff = (page - 1) * pageSize + 1
       console.log('change this.parameters.staff =>', this.parameters.staff)
       getArtPro(this.parameters).then(res => {
-        if (res.data.data) this.data = res.data.data
+        if (res.data) this.data = res.data
         // console.log('doc-> listBody -> this.data', this.data)
       })
     }

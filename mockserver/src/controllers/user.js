@@ -16,10 +16,10 @@ class common {
 
     // 用户登录获得cookie
     async userLogin(ctx) {
-       
+        console.log("ctx.request.fields=>", ctx.request.fields)
         try {
-            let username = ctx.request.body.username
-            let password = ctx.request.body.password
+            let username = ctx.request.fields.username
+            let password = ctx.request.fields.password
             let cookies = ctx.cookie;
 
             ctx.cookies.set('koa:sess', '000', {
@@ -83,9 +83,9 @@ class common {
     // 获得用户列表
     async getUserList(ctx) {
         try {
-            let pageSize = ctx.request.body.pageSize || SYSTEM.PAGESIZE
-            let pageNo = ctx.request.body.pageNo || 1
-            let username = ctx.request.body.username
+            let pageSize = ctx.request.fields.pageSize || SYSTEM.PAGESIZE
+            let pageNo = ctx.request.fields.pageNo || 1
+            let username = ctx.request.fields.username
             let arr = [];
 
             if (username) {
@@ -138,9 +138,9 @@ class common {
     // 修改｜新增 用户
     async editUser(ctx) {
         try {
-            let id = ctx.request.body.id
-            let username = ctx.request.body.username
-            let password = ctx.request.body.password
+            let id = ctx.request.fields.id
+            let username = ctx.request.fields.username
+            let password = ctx.request.fields.password
 
             if (!username.trim() || !password.trim()) {
                 ctx.body = util.result({
@@ -204,9 +204,9 @@ class common {
     // 修改用户密码
     async updatePassword(ctx) {
         try {
-            let username = ctx.request.body.username
-            let oldPassword = ctx.request.body.oldPassword
-            let newPassword = ctx.request.body.newPassword
+            let username = ctx.request.fields.username
+            let oldPassword = ctx.request.fields.oldPassword
+            let newPassword = ctx.request.fields.newPassword
 
             // 检测用户是否存在
             let sql = getsql.SELECT({
@@ -258,8 +258,8 @@ class common {
     // 用户绑定的系统
     async choseProject(ctx) {
         try {
-            let userId = ctx.request.body.userId
-            let projectIds = ctx.request.body.projectIds
+            let userId = ctx.request.fields.userId
+            let projectIds = ctx.request.fields.projectIds
 
             if (!userId) {
                 ctx.body = util.result({

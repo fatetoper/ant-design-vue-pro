@@ -8,6 +8,8 @@ export let SYSTEM = {
 	PROT: 18805,
 	// 分页条数
 	PAGESIZE: 10,
+	HOST: 'localhost',
+	MD5_KEY: 'SDfdfg5aO*&$O%ohlkuIYIUOR$LUI$HR(&*FHULI$HRGSDLKJFHSDILUY$*OOY$IUHILUFH*O$&TIGRgrdrgd大概多少风格士大夫敢死队风格让他如果士大夫敢死队发)',
 }
 
 export let DB = {
@@ -20,7 +22,7 @@ export let DB = {
 	// 数据库密码    
 	PASSWORD: 'root', 
 	// 数据库名称    
-	DATABASE: 'mock_zane_cms',
+	DATABASE: 'mock_server',
 	// 默认"api_"
 	PREFIX: 'mock_'
 }
@@ -32,4 +34,32 @@ export let NODEMAILER = {
 	USER: 'xxx@163.com',
 	// 邮箱密码
 	PASSWORD: '132456',
+}
+
+export let REDIS = {
+	HOST: 'localhost',
+	PORT: 6379,
+	PASS: '',
+}
+
+export let UPLOAD = {
+	DIR: path.resolve(__dirname, 'upload'),
+	TMP: path.resolve(__dirname, 'upload\\tmp'),  
+}
+
+export let SESSION = {
+	MAXAGE: 86400*1000,
+	key_count: 1024,
+	key_len: 1024,
+	key_path: path.resolve(__dirname, '.keys'),
+	token_len: 32,
+}
+
+export let STATIC = {
+	PATH: path.resolve(__dirname, 'static'),
+}
+
+export let ERRORS = {
+	404: path.resolve(__dirname, 'errors/404.html'),
+	500: path.resolve(__dirname, 'errors/500.html'),
 }

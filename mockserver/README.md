@@ -1,7 +1,7 @@
-#zane-koa2-restful-api
+#fatetoper-koa2-mock-api
 
 
-### 项目采用 koa2+gulp+mysal 搭建的一套后台集成模板
+### 项目采用 koa2+gulp+mysql 搭建的一套后台集成模板
 
 ##项目通过gulp-nodemon 实时编译刷新node服务
 

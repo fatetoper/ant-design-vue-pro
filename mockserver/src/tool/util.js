@@ -48,7 +48,7 @@ class util {
 
     // http 签名验证验证参数
     checkSiginHttp(ctx) {
-        let datas = ctx.request.body
+        let datas = ctx.request.fields
         console.log('datas==>',datas)
         if (!datas) {
             ctx.body = this.result({

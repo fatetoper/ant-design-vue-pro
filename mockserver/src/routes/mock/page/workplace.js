@@ -98,7 +98,6 @@ router.get('/activity', (ctx) => {
 
 router.get('/projects', (ctx) => {
   const data = (options) => {
-    console.log('projects', options)
     const projects = {
       'data': [{
           id: 1,
@@ -161,7 +160,6 @@ router.get('/projects', (ctx) => {
 
 router.get('/teams', (ctx) => {
   const data = (options) => {
-    console.log('teams', options)
     const teams = [
       {
         id: 1,
@@ -196,7 +194,6 @@ router.get('/teams', (ctx) => {
 
 router.get('/radar', (ctx) => {
   const data = (options) => {
-    console.log('radar', options)
     const radar = [
       {
         item: '引用',

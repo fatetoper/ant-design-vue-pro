@@ -10,7 +10,7 @@ const checkfn = controllers.common.checkRequestUrl;
 
 router.get('/info', (ctx) => {
   const info = (options) => {
-    console.log('options', options)
+    console.log('info==>options', options)
     const userInfo = {
       'id': '4291d7da9005377ec9aec4a71ea837f',
       'name': '天野远子',
@@ -428,6 +428,7 @@ router.get('/info', (ctx) => {
     return userInfo
   }
   ctx.response.body = {result: info()}
+  // ctx.body = {result: info()}
 })
 router.get('/nav', checkfn, controllers.user.editUser)
 module.exports=router.routes();
