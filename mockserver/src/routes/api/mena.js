@@ -8,7 +8,7 @@ const sendCheck=require('../../libs/sendCheck')
 const makeToken=require('../../libs/maketoken')
 const makeRandom=require('../../libs/makerandom')
 const { getStat, doUnlink, doMkdir }=require('../../libs/fs')
-const config=require('../../config')
+const {UPLOAD, SYSTEM}=require('../../config')
 
 let router=new Router()
 
@@ -305,8 +305,8 @@ router.post('/checkNum/', async ctx=>{
 // 获取一个新的filename	GET	/api/mena/newfilename
 router.get('/dirname', async ctx=>{
   let dirname = 'm25p3'
-  const baseurl = config.upload_tmp.split('\\')[1]
-  const host = config.host + ':' + config.port
+  const baseurl = UPLOAD.TMP.split('\\')[1]
+  const host = SYSTEM.HOST + ':' + SYSTEM.PROT
   console.log('@baseurl=>', baseurl)
   ctx.body= {
     dirname,
@@ -324,7 +324,7 @@ router.get('/dirname', async ctx=>{
 // }
 router.get('/images/:dirname', async ctx=>{
   const dirname = ctx.params.dirname
-  const baseUrl = 'http://' + config.host + ':' + config.port
+  const baseUrl = 'http://' + SYSTEM.HOST + ':' + SYSTEM.PROT
   const sql = `SELECT aid AS uid,title AS name,CONCAT('${baseUrl}',url)AS url,uptime,'done' AS status  FROM rc_uploads WHERE arcpath = '${dirname}'`
   try {
     const res = await ctx.db.query(sql)
@@ -357,7 +357,7 @@ async (ctx, next) => {
     const tmpDir = 'tmp'
     pathUpload = ctx.request.fields.dirname
 
-    const renamePath = config.upload_tmp.replace(tmpDir, pathUpload)
+    const renamePath = UPLOAD.TMP.replace(tmpDir, pathUpload)
     ctx.renamePath = renamePath
     ctx.renameDir = renamePath + '\\' + file.name
     console.log('@3=================@renameDir=>', ctx.renameDir)

@@ -1,8 +1,8 @@
 <!--
  * @Author: fatetoper
  * @Date: 2020-09-20 09:30:37
- * @LastEditors: fatetoper
- * @LastEditTime: 2020-09-27 09:35:01
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-11-19 13:07:56
  * @Modultype: Component
  * @Usage: import/global/prototype
  * @Description: Do not edit
@@ -78,7 +78,7 @@ export default {
     imgDefUrl: {
       type: String,
       required: false,
-      default: 'http://localhost:8081/upload/def/NoImg0.png'
+      default: 'http://localhost:18805/images/NoImg0.png'
     },
     formItemLayout: {
       type: Object,

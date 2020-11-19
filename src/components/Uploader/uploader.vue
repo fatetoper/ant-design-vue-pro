@@ -1,8 +1,8 @@
 <!--
  * @Author: fatetoper
  * @Date: 2020-07-07 20:46:43
- * @LastEditors: fatetoper
- * @LastEditTime: 2020-09-27 09:36:50
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-11-19 14:16:01
  * @Modultype: Component
  * @Usage: import
  * @Description: Do not edit
@@ -53,7 +53,7 @@ export default {
   props: {
     action: {
       type: String,
-      default: ' http://localhost:8000/8081/imgupload'
+      default: ' http://localhost:8000/18805/api/mena/imgupload'
     },
     title: {
       type: String,

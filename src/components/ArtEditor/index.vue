@@ -174,42 +174,6 @@
               :host="host"
               :dirname="dirname"
             />
-            <!-- <a-row :gutter="24">
-              <a-col
-                :span="8"
-                style="{ display: 'block' }"
-              >
-                <a-form-item v-bind="formItemLayout" label="缩略图">
-                  <a-input
-                    v-decorator="[
-                      'litpic1',
-                      {
-                        initialValue: formTable.litpic1,
-                        rules: [{ message: 'Please upload your picture!', whitespace: true }],
-                      },
-                    ]"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col
-                :span="3"
-                style="{ display: 'block' }"
-              >
-                <a-form-item v-bind="formItemLayout" label="">
-                  <a-button @click="handleBrowse('litpic1')">浏览...</a-button>
-                </a-form-item>
-              </a-col>
-              <a-col
-                :span="3"
-                style="{ display: 'block'; }"
-              >
-                <a-form-item v-bind="formItemLayout" label="预览">
-                  <div class="imgpreview" :style="imgpreviewStyle">
-                    <img :src="litpic1" alt="">
-                  </div>
-                </a-form-item>
-              </a-col>
-            </a-row> -->
             <!-- source writer -->
             <a-row :gutter="24">
               <a-col
@@ -478,14 +442,6 @@ export default {
       obj.body = this.msg
       return obj
     },
-    // litpic () {
-    //   const imgUrl = 'http://' + this.host + this.formTable.litpic
-    //   return imgUrl
-    // },
-    // litpic1 () {
-    //   const imgUrl = 'http://' + this.host + this.formTable.litpic1
-    //   return imgUrl
-    // },
     imgpreviewStyle () {
       const st = `background:url(${this.imgDefUrl}) no-repeat center;`
       return st
@@ -493,29 +449,29 @@ export default {
   },
   created () {
     getEditorInfo().then(res => {
-      if (res.data.data) {
-        this.treeData = res.data.data.tree
+      if (res.data) {
+        this.treeData = res.data.tree
         // console.log('ArtEditor -> this.treeData', this.treeData)
       }
     })
     getWriter().then(res => {
-      if (res.data.data) {
-        this.writer = res.data.data.writer
+      if (res.data) {
+        this.writer = res.data.writer
         // console.log('ArtEditor -> this.writer', this.writer)
       }
     })
     getSource().then(res => {
-      if (res.data.data) {
-        this.source = res.data.data.source
+      if (res.data) {
+        this.source = res.data.source
         // console.log('ArtEditor -> this.source', this.source)
       }
     })
     if (this.editorType === 'add') {
       getDirname().then(res => {
-      if (res.data.data) {
-        this.dirname = res.data.data.dirname
-        this.baseurl = res.data.data.baseurl
-        this.host = res.data.data.host
+      if (res.data) {
+        this.dirname = res.data.dirname
+        this.baseurl = res.data.baseurl
+        this.host = res.data.host
         // console.log('ArtEditor -> this.dirname', this.dirname)
         // console.log('ArtEditor -> this.baseurl', this.baseurl)
         // console.log('ArtEditor -> this.host', this.host)
