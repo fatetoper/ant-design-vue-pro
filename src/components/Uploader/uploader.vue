@@ -2,7 +2,7 @@
  * @Author: fatetoper
  * @Date: 2020-07-07 20:46:43
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-11-19 14:16:01
+ * @LastEditTime: 2020-11-19 21:33:50
  * @Modultype: Component
  * @Usage: import
  * @Description: Do not edit
@@ -74,43 +74,7 @@ export default {
       url: 'ooo',
       zIndex: 4,
       width: '45%',
-      defaultFileList: [
-        // {
-        //   uid: '-1',
-        //   name: 'image.png',
-        //   status: 'done',
-        //   url: 'http://localhost:8081/upload/def/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        // },
-        // {
-        //   uid: '-6',
-        //   name: 'image.png',
-        //   status: 'done',
-        //   url: 'http://localhost:8081/upload/def/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        // },
-        // {
-        //   uid: '-2',
-        //   name: 'image.png',
-        //   status: 'done',
-        //   url: 'http://localhost:8081/upload/def/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        // },
-        // {
-        //   uid: '-3',
-        //   name: 'image.png',
-        //   status: 'done',
-        //   url: 'http://localhost:8081/upload/def/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        // },
-        // {
-        //   uid: '-4',
-        //   name: 'image.png',
-        //   status: 'done',
-        //   url: 'http://localhost:8081/upload/def/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        // },
-        // {
-        //   uid: '-5',
-        //   name: 'image.png',
-        //   status: 'error'
-        // }
-      ],
+      defaultFileList: [],
       select: '0',
       urlReciver: {},
       urlData: () => {},
@@ -134,8 +98,8 @@ export default {
   created () {
     const res = getImages(this.dirName)
     res.then(res => {
-      console.log('Uploader=>res.data.data=>', res.data.data)
-      this.defaultFileList = res.data.data
+      console.log('Uploader=>res.data.data=>', res.data)
+      this.defaultFileList = res.data
       console.log('Uploader=>this.defaultFileList=>', this.defaultFileList)
     })
   },

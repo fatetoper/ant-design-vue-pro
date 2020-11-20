@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-19 01:37:59
+ * @LastEditTime: 2020-11-19 23:36:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \mockserver\src\config.js
+ */
 import path from 'path'
 
 // 系统配置
@@ -43,8 +51,8 @@ export let REDIS = {
 }
 
 export let UPLOAD = {
-	DIR: path.resolve(__dirname, 'upload'),
-	TMP: path.resolve(__dirname, 'upload\\tmp'),  
+	DIR: path.resolve(__dirname, 'static'),
+	TMP: path.resolve(__dirname, 'static\\tmp'),  
 }
 
 export let SESSION = {

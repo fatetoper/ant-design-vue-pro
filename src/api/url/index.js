@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-07-14 11:21:38
- * @LastEditTime: 2020-11-17 20:58:11
- * @LastEditors: your name
+ * @LastEditTime: 2020-11-19 20:54:14
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \antdv-pro\src\api\url\index.js
  */
@@ -39,7 +39,10 @@ const mena = {
   artdetail: '/api/mena/artdetail',
   editorinfo: '/api/mena/editorinfo',
   writer: '/api/mena/writer',
-  source: '/api/mena/source'
+  source: '/api/mena/source',
+  imgupload: '/api/mena/imgupload',
+  dirname: '/api/mena/dirname',
+  images: '/api/mena/images'
 }
 
 const mock = {

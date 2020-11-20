@@ -349,7 +349,7 @@ export default {
     imgDefUrl: {
       type: String,
       required: false,
-      default: 'http://localhost:8081/upload/def/NoImg0.png'
+      default: 'http://localhost:18805/images/NoImg0.png'
     },
     editorFn: {
       type: Function,
@@ -472,7 +472,7 @@ export default {
         this.dirname = res.data.dirname
         this.baseurl = res.data.baseurl
         this.host = res.data.host
-        // console.log('ArtEditor -> this.dirname', this.dirname)
+        console.log('ArtEditor -> this.dirname', this.dirname)
         // console.log('ArtEditor -> this.baseurl', this.baseurl)
         // console.log('ArtEditor -> this.host', this.host)
       }

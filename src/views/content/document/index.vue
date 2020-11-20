@@ -130,7 +130,7 @@ export default {
       if (fn) {
         this.editor.fn = fn
       } else {
-        this.editor.fn = () => { }
+        this.editor.fn = () => {}
       }
       this.editor.show = !this.editor.show
     }

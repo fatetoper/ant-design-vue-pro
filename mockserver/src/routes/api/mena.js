@@ -392,7 +392,8 @@ async (ctx, next) => {
       const length = arr.length
       return arr[length - 2]
     }
-    ctx.url = '/' + baseUrl(ctx.renamePath) + '/' + ctx.imgPath
+    // ctx.url = '/' + baseUrl(ctx.renamePath) + '/' + ctx.imgPath
+    ctx.url = '/' + ctx.imgPath
     const { file:[{ size: upSize, name:upName , type: upType }], dirname: arcPath, arcid: arcId } = ctx.request.fields
     const time = Math.round(new Date().getTime()/1000).toString()
     const imgInfo = {
@@ -409,7 +410,7 @@ async (ctx, next) => {
     console.log(sql)
     try {
       const res = await ctx.db.query(sql) 
-      // console.log(res)
+      console.log('/imgupload', res)
       if (res) {
         ctx.body = {
           url: ctx.url
